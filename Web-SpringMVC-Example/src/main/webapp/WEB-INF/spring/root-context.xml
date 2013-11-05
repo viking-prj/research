@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<import resource="classpath:/META-INF/spring/dao-context.xml" />
+
+	<bean id="generalProperties"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:general.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="customerService" class="com.vik.research.web.util.InitHsql"
+		init-method="initIt" destroy-method="cleanUp">
+	</bean>
+
+</beans>
